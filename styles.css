@@ -1,0 +1,23 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #666;
+}
+
+.container {
+    padding: 48px;
+    width: 780px;
+    height: 780px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: red;
+}
+
+.square {
+    background-color: white;
+    border: 0;
+    margin: 0;
+
+}
