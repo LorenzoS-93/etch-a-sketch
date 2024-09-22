@@ -50,9 +50,9 @@ function game() {
         });
     }
     
-    const clr = document.querySelector(".colour");
+    const clr = document.querySelector(".color");
     clr.addEventListener("click", () => {
-    colour = prompt("Enter desired colour", "black");
+    colour = prompt("Enter desired color", "black");
 });
 }
 
