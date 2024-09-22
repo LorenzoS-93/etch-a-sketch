@@ -73,7 +73,7 @@ function game() {
     }
       
     clr.addEventListener("click", () => {
-        color = prompt("Enter desired color", "black");
+        color = prompt("Enter desired color (rainbow or random for funny)", "black");
         colorSquare(clr, color);
         clr.textContent = `${capitalizeFirstLetter(color.toLowerCase())}`;
     });
