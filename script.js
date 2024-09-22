@@ -11,7 +11,7 @@ container.setAttribute("class", "container");
 
 
 function game() {
-    let colour = "black";
+    let color = "black";
     // create n*n square in a grid;
     while (container.firstChild) {
         container.removeChild(container.lastChild);
@@ -31,20 +31,29 @@ function game() {
     const nodeList = document.querySelectorAll(".square");
     for(const square of nodeList) {
         square.addEventListener("mousedown", () => {
-            isDrawing = true;
-            //square.setAttribute("class", `${square.getAttribute("class")} ${colour}`);
-            square.style.backgroundColor = `${colour}`;
+            isDrawing = true
+            if (color === "rainbow"){
+                square.setAttribute("class", `${square.getAttribute("class")} rainbow`);
+            }
+            else
+                square.style.backgroundColor = `${color}`;
         });
         square.addEventListener("mousemove", () => {
             if(isDrawing) {
-                //square.setAttribute("class", `${square.getAttribute("class")} ${colour}`);
-                square.style.backgroundColor = `${colour}`;
+                if (color === "rainbow"){
+                    square.setAttribute("class", `${square.getAttribute("class")} rainbow`);
+                }
+                else
+                    square.style.backgroundColor = `${color}`;
             } 
         });
         square.addEventListener("mouseup", () => {
             if(isDrawing) {
-                //square.setAttribute("class", `${square.getAttribute("class")} ${colour}`);
-                square.style.backgroundColor = `${colour}`;
+                if (color === "rainbow"){
+                    square.setAttribute("class", `${square.getAttribute("class")} rainbow`);
+                }
+                else
+                    square.style.backgroundColor = `${color}`;
                 isDrawing = false;
             }
         });
@@ -52,7 +61,7 @@ function game() {
     
     const clr = document.querySelector(".color");
     clr.addEventListener("click", () => {
-    colour = prompt("Enter desired color", "black");
+    color = prompt("Enter desired color", "black");
 });
 }
 
