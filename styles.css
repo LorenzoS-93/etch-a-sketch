@@ -21,6 +21,18 @@ ul {
     display: flex;
     list-style-type: none;
     gap: 16px;
+    margin: 0;
+}
+
+button {
+    font-size: 18px;
+    color: #E5E7EB;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.reset {
+    color: red;
 }
 
 .content {

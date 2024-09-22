@@ -8,10 +8,11 @@ content.setAttribute("class", "content");
 content.appendChild(container);
 container.setAttribute("class", "container");
 
-
-
 function game() {
     let color = "black";
+    const clr = document.querySelector(".color");
+    clr.style.backgroundColor = `${color}`;
+    let opa = 0;
     // create n*n square in a grid;
     while (container.firstChild) {
         container.removeChild(container.lastChild);
@@ -35,16 +36,23 @@ function game() {
             if (color === "rainbow"){
                 square.setAttribute("class", `${square.getAttribute("class")} rainbow`);
             }
-            else
+            else {
                 square.style.backgroundColor = `${color}`;
+                //opa += 0.1;
+                //square.style.opacity = `${opa}`;
+            }
+                
         });
         square.addEventListener("mousemove", () => {
             if(isDrawing) {
                 if (color === "rainbow"){
                     square.setAttribute("class", `${square.getAttribute("class")} rainbow`);
                 }
-                else
+                else {
                     square.style.backgroundColor = `${color}`;
+                    //opa += 0.1;
+                    //square.style.opacity = `${opa}`;
+                }
             } 
         });
         square.addEventListener("mouseup", () => {
@@ -52,23 +60,24 @@ function game() {
                 if (color === "rainbow"){
                     square.setAttribute("class", `${square.getAttribute("class")} rainbow`);
                 }
-                else
+                else {
                     square.style.backgroundColor = `${color}`;
+                    //opa += 0.1;
+                    //square.style.opacity = `${opa}`;
+                }
                 isDrawing = false;
             }
         });
     }
     
-    const clr = document.querySelector(".color");
+    
     clr.addEventListener("click", () => {
     color = prompt("Enter desired color", "black");
-});
+    clr.style.backgroundColor = `${color}`;
+    });
 }
 
 game();
-
-
-
 
 const btn = document.querySelector(".reset");
 btn.addEventListener("click", () => {
