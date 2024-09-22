@@ -1,18 +1,53 @@
 // number of divs
 let n = 16;
-let dim = Math.sqrt(780*780/n);
 const container = document.createElement("div");
+const content = document.createElement("div");
+document.body.appendChild(content);
+content.setAttribute("class", "content");
 
-document.body.appendChild(container);
+content.appendChild(container);
 container.setAttribute("class", "container");
 
-// create n buttons, each with a class and a text equal to the current position of the oprions array
-let docFrag = document.createDocumentFragment();
-for (let i = 1; i <= n; i++) {
-    let elem = document.createElement("div");
-    elem.setAttribute("class", "square");
-    elem.setAttribute("style", `width: ${dim}px; height: ${dim}px;`);
-    docFrag.appendChild(elem);
-}
-container.appendChild(docFrag);
+function game() {
+    // create n*n square in a grid;
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+    n *= n;
+    let dim = Math.sqrt(780*780/n);
+    let docFrag = document.createDocumentFragment();
+    for (let i = 1; i <= n; i++) {
+        let elem = document.createElement("div");
+        elem.setAttribute("class", "square");
+        elem.setAttribute("style", `width: ${dim}px; height: ${dim}px;`);
+        docFrag.appendChild(elem);
+    }
+    container.appendChild(docFrag);
 
+    let isDrawing = false;
+    const nodeList = document.querySelectorAll(".square");
+    for(const square of nodeList) {
+        square.addEventListener("mousedown", () => {
+            isDrawing = true;
+            square.setAttribute("class", `${square.getAttribute("class")} colored`);
+        });
+        square.addEventListener("mousemove", () => {
+            if(isDrawing) square.setAttribute("class", `${square.getAttribute("class")} colored`);
+        });
+        square.addEventListener("mouseup", () => {
+            if(isDrawing) {
+                square.setAttribute("class", `${square.getAttribute("class")} colored`);
+                isDrawing = false;
+            } 
+        });
+    }
+
+}
+
+game();
+
+const btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+    n = prompt("Enter the number of square", "maxx 100");
+    game();
+});
